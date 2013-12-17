@@ -18,7 +18,7 @@ var nc = new NC({userAgent:'my-awesome-app/0.0.1 ( http://my-awesome-app.com )'}
 Setting a custom `host`, `basePath` and `defaultPerPage` (if not set, the `defaultPerPage` is 50);
 
 ```javascript
-var nc = new NC({host:'localhost', basePath:'/path/to/data/', defaultPerPage: 50});
+var nc = new NC({host:'localhost', basePath:'/path/to/data/', defaultPerPage:100});
 ```
 
 ## Resources
@@ -49,7 +49,7 @@ nc.artist(1602787, function(err, response){
 Returns a list of [Releases][2] and [Masters][3] associated with the `artist`. Accepts Pagination parameters.
 
 ```javascript
-nc.artistReleases(1602787, {page: 2, per_page: 10}, function(err, response){
+nc.artistReleases(1602787, {page:2, per_page:10}, function(err, response){
     console.log(response);
 });
 ```
@@ -134,7 +134,7 @@ nc.image('A-1602787-1368176977-5588.jpeg', function(err, response){
 The [Search][6] resource lists objects in the database that meet the criteria you specify.
 
 ```javascript
-nc.search({type:'release', country:'UK', page: 2, per_page: 3}, function(err, response){
+nc.search({type:'release', country:'UK', page:2, per_page:3}, function(err, response){
     console.log(response);
 });
 ```
