@@ -165,7 +165,7 @@ describe('Nodecogs', function(){
 
         nc.image('R-1684003-1236712979.jpeg', function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/images/R-1684003-1236712979.jpeg');
+          assert.equal(path, '/image/R-1684003-1236712979.jpeg');
         });
       });
     });

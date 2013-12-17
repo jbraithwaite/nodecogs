@@ -116,9 +116,16 @@ The Image resource represents a user-contributed image of a database object, suc
 
 ```javascript
 nc.image('A-1602787-1368176977-5588.jpeg', function(err, response){
-
-    // Binary image data
     console.log(response);
+
+    // "contentType": "image/jpeg",
+    // "rateLimit": {
+    //     "limit": "1000",
+    //     "remaining": "955",
+    //     "reset": "81631",
+    //     "type": "image"
+    // },
+    // "image" : ... // Binary data
 });
 ```
 
