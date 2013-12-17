@@ -18,7 +18,7 @@ var nc = new NC({userAgent:'my-awesome-app/0.0.1 ( http://my-awesome-app.com )'}
 Setting a custom `host`, `basePath` and `defaultPerPage` (if not set, the `defaultPerPage` is 50);
 
 ```javascript
-var nc = new NC({host:'localhost', basePath:'/path/to/data/', defaultPerPage:50});
+var nc = new NC({host:'localhost', basePath:'/path/to/data/', defaultPerPage: 50});
 ```
 
 ## Resources
@@ -41,7 +41,7 @@ The Database resouce contains six resources:
 The `artist` resource represents a person in the Discogs database who contributed to a [Release][2] in some capacity.
 
 ```javascript
-nc.artist(1602787,function(err, response){
+nc.artist(1602787, function(err, response){
     console.log(response);
 });
 ```
@@ -69,7 +69,7 @@ The `release` resource represents a particular physical or digital object releas
 Look up a release:
 
 ```javascript
-nc.release(2113771,function(err, response){
+nc.release(2113771, function(err, response){
     console.log(response);
 });
 ```
@@ -79,7 +79,7 @@ nc.release(2113771,function(err, response){
 The `master` resource represents a set of similar [Releases][2]. Masters (also known as “master releases”) have a “main release” which is often the chronologically earliest.
 
 ```javascript
-nc.master(220990,function(err, response){
+nc.master(220990, function(err, response){
     console.log(response);
 });
 ```
@@ -97,9 +97,10 @@ nc.masterVersions(220990, function(err, response){
 The `label` resource represents a label, company, recording studio, location, or other entity involved with [Artists][1] and [Releases][2]. Labels were recently expanded in scope to include things that aren’t labels – the name is an artifact of this history.
 
 ```javascript
-nc.label(22532,function(err, response){
+nc.label(22532, function(err, response){
     console.log(response);
 });
+```
 
 Returns a list of [Releases][2] associated with the `label`. Accepts Pagination parameters.
 
@@ -107,17 +108,19 @@ Returns a list of [Releases][2] associated with the `label`. Accepts Pagination 
 nc.labelReleases(22532, function(err, response){
     console.log(response);
 });
+```
 
 ### Image
 
 The Image resource represents a user-contributed image of a database object, such as [Artists][1] or [Releases][2].
 
 ```javascript
-nc.image('A-1602787-1368176977-5588.jpeg',function(err, response){
+nc.image('A-1602787-1368176977-5588.jpeg', function(err, response){
 
     // Binary image data
     console.log(response);
 });
+```
 
 ### Search
 
@@ -127,13 +130,14 @@ The [Search][6] resource lists objects in the database that meet the criteria yo
 nc.search({type:'release', country:'UK', page: 2, per_page: 3}, function(err, response){
     console.log(response);
 });
+```
 
 Take into the power of [Lucene search][8] by using the `q` parameter.
 
 ```javascript
-  nc.search({type:'release', q:'artist:t??l OR artist:afx AND -year:1997'}, function(err, response){
+nc.search({type:'release', q:'artist:t??l OR artist:afx AND -year:1997'}, function(err, response){
     console.log(response);
-  });
+});
 ```
 
 #### todo
