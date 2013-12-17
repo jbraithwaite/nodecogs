@@ -1,0 +1,44 @@
+{
+  "name": "nodecogs",
+  "description": "A Discogs API v2.0 client",
+  "keywords": [
+    "nodecogs",
+    "music",
+    "api"
+  ],
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jbraithwaite/nodecogs.git"
+  },
+  "author": {
+    "name": "Justin Braithwaite",
+    "email": "justinbraithwaite@gmail.com",
+    "url": "http://www.projectnine.io/"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": ">=1.15.1"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "engines": [
+    "node >=0.9.0"
+  ],
+  "main": "./lib/nodecogs",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jbraithwaite/nodecogs/raw/master/LICENSE"
+    }
+  ],
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/jbraithwaite/nodecogs/issues"
+  }
+}
