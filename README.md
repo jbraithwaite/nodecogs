@@ -11,8 +11,12 @@ Nodecogs asks that you [identifying your application](http://www.discogs.com/dev
 ```javascript
 var NC = require('nodecogs');
 
-// Initialize Nodecogs
-var nc = new NC({userAgent:'my-awesome-app/0.0.1 ( http://my-awesome-app.com )'});
+// Initialize Nodecogs with your authentication credentials created at https://www.discogs.com/settings/developers
+var nc = new NC({
+  userAgent:'my-awesome-app/0.0.1 ( http://my-awesome-app.com )',
+  accessKey: 'MY-DISCOGS-ACCESS-KEY',
+  accessSecret: "MY-DISCOGS-ACCESS-SECRET"
+});
 ```
 
 Setting a custom `host`, `basePath` and `defaultPerPage` (if not set, the `defaultPerPage` is 50);
