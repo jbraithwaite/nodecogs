@@ -164,18 +164,6 @@ describe('Nodecogs', function(){
       });
     });
 
-    // Images
-    describe('Images', function(){
-      it('Look up a label', function(){
-        var nc = new NC();
-
-        nc.image('R-1684003-1236712979.jpeg', function(err, path){
-          assert.equal(err, null);
-          assert.equal(path, '/image/R-1684003-1236712979.jpeg');
-        });
-      });
-    });
-
     // Search
     describe('Search', function(){
       it('Empty search', function(){
