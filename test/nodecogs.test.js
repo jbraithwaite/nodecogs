@@ -40,6 +40,12 @@ describe('Nodecogs', function(){
       assert.equal(nc.userAgent, 'my-app/0.0.1 ( http://myapp.com )');
     });
 
+    it('Can set auth key and secret', function(){
+      var nc = new NC({accessKey: 'dummyAuthKey', accessSecret: 'dummyAuthSecret'});
+      assert.equal(nc.accessKey, 'dummyAuthKey');
+      assert.equal(nc.accessSecret, 'dummyAuthSecret');
+    });
+
     it('Can set Default Per Page', function(){
       var nc = new NC({defaultPerPage: 100});
       assert.equal(nc.per_page, 100);
@@ -63,7 +69,7 @@ describe('Nodecogs', function(){
 
         nc.artist('87016', function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/artists/87016');
+          assert.equal(path, '/artists/87016?key=undefined&secret=undefined');
         });
       });
 
@@ -72,7 +78,7 @@ describe('Nodecogs', function(){
 
         nc.artistReleases('87016', function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/artists/87016/releases');
+          assert.equal(path, '/artists/87016/releases?key=undefined&secret=undefined');
         });
       });
 
@@ -81,7 +87,7 @@ describe('Nodecogs', function(){
 
         nc.artistReleases('87016', {page: 3}, function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/artists/87016/releases?page=3&per_page=50');
+          assert.equal(path, '/artists/87016/releases?page=3&per_page=50&key=undefined&secret=undefined');
         });
       });
 
@@ -90,7 +96,7 @@ describe('Nodecogs', function(){
 
         nc.artistReleases('87016', {per_page: 25}, function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/artists/87016/releases?page=1&per_page=25');
+          assert.equal(path, '/artists/87016/releases?page=1&per_page=25&key=undefined&secret=undefined');
         });
       });
 
@@ -99,7 +105,7 @@ describe('Nodecogs', function(){
 
         nc.artistReleases('87016', {page: 2, per_page: 30}, function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/artists/87016/releases?page=2&per_page=30');
+          assert.equal(path, '/artists/87016/releases?page=2&per_page=30&key=undefined&secret=undefined');
         });
       });
     });
@@ -111,7 +117,7 @@ describe('Nodecogs', function(){
 
         nc.release('1659014', function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/releases/1659014');
+          assert.equal(path, '/releases/1659014?key=undefined&secret=undefined');
         });
       });
     });
@@ -123,7 +129,7 @@ describe('Nodecogs', function(){
 
         nc.master('8471', function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/masters/8471');
+          assert.equal(path, '/masters/8471?key=undefined&secret=undefined');
         });
       });
 
@@ -132,7 +138,7 @@ describe('Nodecogs', function(){
 
         nc.masterVersions('8471', function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/masters/8471/versions');
+          assert.equal(path, '/masters/8471/versions?key=undefined&secret=undefined');
         });
       });
     });
@@ -144,7 +150,7 @@ describe('Nodecogs', function(){
 
         nc.label('1', function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/labels/1');
+          assert.equal(path, '/labels/1?key=undefined&secret=undefined');
         });
       });
 
@@ -153,19 +159,7 @@ describe('Nodecogs', function(){
 
         nc.labelReleases('1', function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/labels/1/releases');
-        });
-      });
-    });
-
-    // Images
-    describe('Images', function(){
-      it('Look up a label', function(){
-        var nc = new NC();
-
-        nc.image('R-1684003-1236712979.jpeg', function(err, path){
-          assert.equal(err, null);
-          assert.equal(path, '/image/R-1684003-1236712979.jpeg');
+          assert.equal(path, '/labels/1/releases?key=undefined&secret=undefined');
         });
       });
     });
@@ -177,7 +171,7 @@ describe('Nodecogs', function(){
 
         nc.search({}, function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/database/search?page=1&per_page=50');
+          assert.equal(path, '/database/search?page=1&per_page=50&key=undefined&secret=undefined');
         });
       });
 
@@ -186,7 +180,7 @@ describe('Nodecogs', function(){
 
         nc.search({type:'artist'}, function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/database/search?type=artist&page=1&per_page=50');
+          assert.equal(path, '/database/search?type=artist&page=1&per_page=50&key=undefined&secret=undefined');
         });
       });
 
@@ -195,7 +189,7 @@ describe('Nodecogs', function(){
 
         nc.search({country:'UK'}, function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/database/search?country=UK&page=1&per_page=50');
+          assert.equal(path, '/database/search?country=UK&page=1&per_page=50&key=undefined&secret=undefined');
         });
       });
 
@@ -204,7 +198,7 @@ describe('Nodecogs', function(){
 
         nc.search({type:'release', country:'UK'}, function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/database/search?type=release&country=UK&page=1&per_page=50');
+          assert.equal(path, '/database/search?type=release&country=UK&page=1&per_page=50&key=undefined&secret=undefined');
         });
       });
 
@@ -213,7 +207,7 @@ describe('Nodecogs', function(){
 
         nc.search({type:'release', country:'UK', page: 2, per_page: 3}, function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/database/search?type=release&country=UK&page=2&per_page=3');
+          assert.equal(path, '/database/search?type=release&country=UK&page=2&per_page=3&key=undefined&secret=undefined');
         });
       });
 
@@ -222,7 +216,7 @@ describe('Nodecogs', function(){
 
         nc.search({type:'release', q:'artist:afx'}, function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/database/search?type=release&q=artist:afx&page=1&per_page=50');
+          assert.equal(path, '/database/search?type=release&q=artist:afx&page=1&per_page=50&key=undefined&secret=undefined');
         });
       });
 
@@ -231,7 +225,7 @@ describe('Nodecogs', function(){
 
         nc.search({type:'release', q:'artist:afx OR artist:tool'}, function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/database/search?type=release&q=artist:afx%20OR%20artist:tool&page=1&per_page=50');
+          assert.equal(path, '/database/search?type=release&q=artist:afx%20OR%20artist:tool&page=1&per_page=50&key=undefined&secret=undefined');
         });
       });
 
@@ -240,7 +234,7 @@ describe('Nodecogs', function(){
 
         nc.search({type:'release', q:'artist:t??l'}, function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/database/search?type=release&q=artist:t??l&page=1&per_page=50');
+          assert.equal(path, '/database/search?type=release&q=artist:t??l&page=1&per_page=50&key=undefined&secret=undefined');
         });
       });
 
@@ -249,7 +243,7 @@ describe('Nodecogs', function(){
 
         nc.search({type:'release', q:'artist:t??l OR artist:afx AND -year:1997'}, function(err, path){
           assert.equal(err, null);
-          assert.equal(path, '/database/search?type=release&q=artist:t??l%20OR%20artist:afx%20AND%20-year:1997&page=1&per_page=50');
+          assert.equal(path, '/database/search?type=release&q=artist:t??l%20OR%20artist:afx%20AND%20-year:1997&page=1&per_page=50&key=undefined&secret=undefined');
         });
       });
 
